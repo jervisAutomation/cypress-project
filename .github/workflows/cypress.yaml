@@ -1,0 +1,40 @@
+name: Run Cypress Tests
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  cypress-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'pnpm'
+
+      - name: Install pnpm
+        run: npm install -g pnpm
+
+      - name: Install Dependencies
+        run: pnpm install
+
+      # Optional: if your app needs to start before Cypress runs
+      # Uncomment and customize if you run a dev server (e.g., React, Vite, etc.)
+      # - name: Run Cypress Tests (with dev server)
+      #   uses: cypress-io/github-action@v6
+      #   with:
+      #     start: pnpm dev
+      #     wait-on: 'http://localhost:3000'
+      #     wait-on-timeout: 60
+
+      # Basic Cypress test run (no dev server required)
+      - name: Run Cypress Tests
+        run: pnpm exec cypress run
