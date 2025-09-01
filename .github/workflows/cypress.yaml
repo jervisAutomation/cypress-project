@@ -18,13 +18,31 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
-          # ❌ REMOVE the cache for pnpm here — not yet usable
 
       - name: Install pnpm
         run: npm install -g pnpm
 
+      - name: Cache pnpm store
+        uses: actions/cache@v3
+        with:
+          path: ~/.pnpm-store
+          key: ${{ runner.os }}-pnpm-store-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-pnpm-store-
+
       - name: Install Dependencies
         run: pnpm install
+
+      - name: Cache Cypress binary
+        uses: actions/cache@v3
+        with:
+          path: ~/.cache/Cypress
+          key: ${{ runner.os }}-cypress-${{ hashFiles('**/pnpm-lock.yaml') }}
+          restore-keys: |
+            ${{ runner.os }}-cypress-
+
+      - name: Install Cypress Binary
+        run: pnpm exec cypress install
 
       - name: Run Cypress Tests
         run: pnpm exec cypress run
