@@ -8,10 +8,8 @@ export default defineConfig({
   e2e: {
     specPattern: "**/*.feature",
     async setupNodeEvents(on, config) {
-      // ✅ Setup the Cucumber preprocessor
       await addCucumberPreprocessorPlugin(on, config);
 
-      // ✅ Register esbuild preprocessor
       on(
         "file:preprocessor",
         createBundler({
@@ -19,10 +17,10 @@ export default defineConfig({
         })
       );
 
-      // ✅ Ensure test results are saved to a JSON file
+      // Add env to enable JSON reporting for cucumber preprocessor
       config.env = {
         ...config.env,
-        "cucumber-preprocessor": {
+        cucumber: {
           json: {
             enabled: true,
             output: path.join("cypress", "cucumber-report", "report.json"),
@@ -32,6 +30,6 @@ export default defineConfig({
 
       return config;
     },
-    baseUrl: "https://www.saucedemo.com/", // Or your target base URL
+    baseUrl: "https://www.saucedemo.com/",
   },
 });
