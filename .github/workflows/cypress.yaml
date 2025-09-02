@@ -46,3 +46,18 @@ jobs:
 
       - name: Run Cypress Tests
         run: pnpm exec cypress run
+
+      # ✅ Generate HTML Report from JSON (adjust based on your tool)
+      - name: Generate Cucumber HTML Report
+        run: |
+          pnpm install -D multiple-cucumber-html-reporter
+          pnpm exec multiple-cucumber-html-reporter \
+            --jsonDir=cypress/cucumber-report \
+            --reportPath=cypress/cucumber-report/html
+
+      # ✅ Upload HTML Report as Artifact
+      - name: Upload Cucumber HTML Report
+        uses: actions/upload-artifact@v4
+        with:
+          name: cucumber-report
+          path: cypress/cucumber-report/html/index.html
