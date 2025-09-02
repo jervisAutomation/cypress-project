@@ -47,13 +47,13 @@ jobs:
       - name: Run Cypress Tests
         run: pnpm exec cypress run
 
-      # ✅ Generate HTML Report from JSON (adjust based on your tool)
+      # ✅ Install Cucumber HTML Reporter as a dev dependency
+      - name: Install Cucumber HTML Reporter
+        run: pnpm add -D multiple-cucumber-html-reporter
+
+      # ✅ Generate HTML Report using Node script
       - name: Generate Cucumber HTML Report
-        run: |
-          pnpm install -D multiple-cucumber-html-reporter
-          pnpm exec multiple-cucumber-html-reporter \
-            --jsonDir=cypress/cucumber-report \
-            --reportPath=cypress/cucumber-report/html
+        run: node generate-report.js
 
       # ✅ Upload HTML Report as Artifact
       - name: Upload Cucumber HTML Report
