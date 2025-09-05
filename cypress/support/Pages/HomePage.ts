@@ -1,14 +1,15 @@
+import { BasePage } from "./BasePage";
 import { HomePageSelectors } from "../Selectors/HomePageSelectors";
 
-export class HomePage {
+export class HomePage extends BasePage {
   addToCart(productToAddToCart: string){
     if(productToAddToCart === 'Sauce Labs Backpack'){
-        HomePageSelectors.addToCartSauceLabsBackpackbutton().click();
+        this.click(HomePageSelectors.addToCartSauceLabsBackpackbutton);
     }
   }
   validateProductButton(button: string){
     if(button === 'Remove Sauce Labs Backpack button'){
-        HomePageSelectors.removeToCartSauceLabskBackpackButton().should('be.visible').should('be.enabled');
+        this.validateElement(HomePageSelectors.removeToCartSauceLabskBackpackButton);
     }
   }
 }

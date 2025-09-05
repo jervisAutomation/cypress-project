@@ -6,9 +6,7 @@ Before({ tags: "@requiresLogin" }, () => {
 
   cy.fixture("loginData").then((data) => {
     const credentials = data.validUser;
-    loginPage.enterUsername(credentials.username);
-    loginPage.enterPassword(credentials.password);
-    loginPage.submit();
+    loginPage.login(credentials.username,credentials.password);
   });
 });
 
