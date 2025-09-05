@@ -10,10 +10,6 @@ Before({ tags: "@requiresLogin" }, () => {
   });
 });
 
-Given("I am in the home page", () => {
-  cy.contains('Swag Labs');
-});
-
 Then("I should be on the {string} page", (pageName: string) =>{
 cy.contains(pageName);
 })

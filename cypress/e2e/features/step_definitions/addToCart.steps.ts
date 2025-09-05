@@ -3,18 +3,12 @@ import { loginPage, homePage } from "cypress/support/pageInstances";
 
 Before({ tags: "@requiresLogin" }, () => {
   cy.visit("/");
-
   cy.fixture("loginData").then((data) => {
     const credentials = data.validUser;
-    loginPage.enterUsername(credentials.username);
-    loginPage.enterPassword(credentials.password);
-    loginPage.submit();
+    loginPage.login(credentials.username, credentials.password);
   });
 });
 
-Given("I am in the home page", () => {
-  cy.contains('Swag Labs');
-});
 
 When("I add to cart the {string}", (productToAddToCart: string) => {
 homePage.addToCart(productToAddToCart);
