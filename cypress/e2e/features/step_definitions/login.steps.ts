@@ -6,14 +6,8 @@ Before({ tags: "@requiresLogin" }, () => {
 
   cy.fixture("loginData").then((data) => {
     const credentials = data.validUser;
-    loginPage.enterUsername(credentials.username);
-    loginPage.enterPassword(credentials.password);
-    loginPage.submit();
+    loginPage.login(credentials.username,credentials.password);
   });
-});
-
-Given("I am in the home page", () => {
-  cy.contains('Swag Labs');
 });
 
 Then("I should be on the {string} page", (pageName: string) =>{

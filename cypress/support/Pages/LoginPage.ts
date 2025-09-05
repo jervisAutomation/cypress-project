@@ -1,19 +1,14 @@
+import { BasePage } from "./BasePage";
 import { LoginSelectors } from "../Selectors/LoginSelectors";
 
-export class LoginPage {
+export class LoginPage extends BasePage {
   visit() {
     cy.visit('/login');
   }
 
-  enterUsername(username: string) {
-    LoginSelectors.usernameInput().type(username);
-  }
-
-  enterPassword(password: string) {
-    LoginSelectors.passwordInput().type(password);
-  }
-
-  submit() {
-    LoginSelectors.submitButton().click();
+  login(username: string, password: string) {
+    this.type(LoginSelectors.usernameInput, username);
+    this.type(LoginSelectors.passwordInput, password);
+    this.click(LoginSelectors.submitButton);
   }
 }
