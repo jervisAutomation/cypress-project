@@ -9,10 +9,6 @@ End-to-end testing framework using **Cypress**, **TypeScript**, and **Cucumber**
 - [🔧 Prerequisites](#-prerequisites)
 - [📥 Installation](#-installation)
 - [▶️ How to Run Tests](#️-how-to-run-tests)
-- [📂 Project Structure](#-project-structure)
-- [✅ Sample Feature](#-sample-feature)
-- [🛠 Tech Stack](#-tech-stack)
-- [🙋‍♂️ Support](#-support)
 
 ---
 
