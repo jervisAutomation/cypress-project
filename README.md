@@ -34,6 +34,7 @@ git clone https://github.com/jervisAutomation/cypress-project.git
 cd cypress-project
 then do "npm isntall" so that it will install all the required packages.
 
-  #️-how-to-run-tests
+## ▶️ How to Run Tests
+
 * This opens an interactive UI where you can select and run tests.
   "npx cypress open"
