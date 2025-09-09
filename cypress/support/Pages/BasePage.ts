@@ -1,5 +1,7 @@
+import { HomePageSelectors } from "../Selectors/HomePageSelectors";
+
 export class BasePage {
-  click(element: () => Cypress.Chainable) {
+  clickElement(element: () => Cypress.Chainable) {
     element().click();
   }
 
@@ -18,4 +20,5 @@ export class BasePage {
   validateElement(element: () => Cypress.Chainable, timeout = 5000) {
     element().should('be.visible', { timeout: 5000 }).should('be.enabled', {timeout: 5000});
   }
+
 }

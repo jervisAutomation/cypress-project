@@ -9,6 +9,6 @@ export class LoginPage extends BasePage {
   login(username: string, password: string) {
     this.type(LoginSelectors.usernameInput, username);
     this.type(LoginSelectors.passwordInput, password);
-    this.click(LoginSelectors.submitButton);
+    this.clickElement(LoginSelectors.submitButton);
   }
 }

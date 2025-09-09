@@ -5,3 +5,6 @@ Feature: Add to cart
     Given I am in the home page
     And I add to cart the "Sauce Labs Backpack"
     Then the "Remove Sauce LAbs Backpack button" should be displayed and enabled
+
+    When I click "addToCartButton"
+    Then "Sauce Labs Backpack" product should be on the add to cart page
