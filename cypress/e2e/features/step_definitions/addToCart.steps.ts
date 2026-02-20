@@ -2,15 +2,6 @@ import { Given, When, Then, Before } from "@badeball/cypress-cucumber-preprocess
 import { loginPage, homePage } from "cypress/support/pageInstances";
 import { HomePageSelectors } from "cypress/support/Selectors/HomePageSelectors";
 
-Before({ tags: "@requiresLogin" }, () => {
-  cy.visit("/");
-  cy.fixture("loginData").then((data) => {
-    const credentials = data.validUser;
-    loginPage.login(credentials.username, credentials.password);
-  });
-});
-
-
 When("I add to cart the {string}", (productToAddToCart: string) => {
 homePage.addToCart(productToAddToCart);
 });
