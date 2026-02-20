@@ -11,6 +11,13 @@
   "author": "",
   "license": "ISC",
   "packageManager": "pnpm@10.15.0",
+
+  "cypress-cucumber-preprocessor": {
+    "stepDefinitions": [
+      "cypress/e2e/**/*.ts"
+    ]
+  },
+
   "devDependencies": {
     "@badeball/cypress-cucumber-preprocessor": "^23.0.0",
     "@bahmutov/cypress-esbuild-preprocessor": "^2.2.5",
